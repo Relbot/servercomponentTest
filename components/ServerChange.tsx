@@ -3,7 +3,7 @@ import ClientChange from "../components/ClientChange"
 
 const getAPIData = async (number: number) => {
   if (number != null) {
-    const result = await fetch("https://api.publicapis.org/entries", { cache: 'no-store' })
+    const result = await fetch("https://api.publicapis.org/entries", { next: { revalidate: 0 } })
     const data = await result.json()
     const elem = data.entries as {API: string}[]
     
